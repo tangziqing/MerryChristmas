@@ -1115,18 +1115,20 @@ h1 span {
 	position: absolute;
 	z-index: 100;
 	top: 0;
-	display: none;
+    display: none;
 }
 .redPacketBox{
-	width: 72%;
-	height: 50%;
-	padding: 10% 4% 0 4%;
-	margin: 30% auto 10px;
-	background: #DD2727;
-	border-radius: 10px;
-	transform: scale(0);
-	-webkit-transform: scale(0);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    vertical-align: middle;
+    width: 250px;
+    height: 280px;
+    background: #DD2727;
+    border-radius: 10px;
     text-align: center;
+    padding-top: 25px;
 }
 .redPacketBox p{
 	color: #FF9900;
@@ -1216,8 +1218,8 @@ h1 span {
 }
 
 .comeup {
-	transform: scale(1);
-	-webkit-transform: scale(1);
+	transform: translate(-50%, -50%)  scale(1);
+	-webkit-transform: translate(-50%, -50%) scale(1);
 	transition: all 0.3s;
 	transition-delay:1s;
 	-webkit-transition: all 0.3s;
