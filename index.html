@@ -1567,7 +1567,7 @@
             function(e) {
                 $(".redPacketInfo").fadeOut();
                 $(".redPacketBox").removeClass("comeup");
-                $(".close").removeClass("comeup");
+                $(".close").removeClass("showup");
                 $(".copyRight").fadeIn().delay(3000).fadeOut();
             });
         clipboard.on('error',
@@ -1605,16 +1605,16 @@
                     playAudio("http://ogovuaov8.bkt.clouddn.com/luckymoney.mp3");
                     $(".redPacketInfo").fadeIn();
                     $(".redPacketBox").addClass("comeup");
-                    $(".close").addClass("comeup");
+                    $(".close").addClass("showup");
 
                     $(".close").one("click", function() {
                         $(".redPacketInfo").hide();
                         $(".redPacketBox").removeClass("comeup");
-                        $(".close").removeClass("comeup");
-                        window.removeEventListener('shake', function (event) {
-                            event.preventDefault();
-                        },false);
+                        $(".close").removeClass("showup");
                     });
+
+                    window.addEventListener('shake', function (event) {
+                        event.preventDefault()}, false);
 
                     e.stopPropagation();
 
