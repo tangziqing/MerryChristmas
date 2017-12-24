@@ -40,12 +40,12 @@ h1 span {
 }
 
 .giftbox {
-	width: 300px;
-	height: 220px;
+	width: 200px;
+	height: 147px;
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	margin-left: -150px;
+	margin-left: -100px;
 	z-index: 10;
 	cursor: pointer;
 }
@@ -191,6 +191,9 @@ h1 span {
 	top: 0;
 	left: 0;
 	opacity: 0;
+	-webkit-transition: opacity 3s;
+	transition: opacity 3s;
+	animation: wobble 0.3s linear 1s 2 forwards;
 }
 
 .background svg path {
@@ -1084,18 +1087,13 @@ h1 span {
 	text-shadow: 5px 5px 0 #ca3121;
 }
 
-.background {
-	-webkit-transition: opacity 3s;
-	transition: opacity 3s;
-}
-
 .step-4 .background {
 	opacity: 1;
 }
 
 .step-4 .background svg {
 	-webkit-animation: wobble 0.3s linear 1s 2 forwards;
-	animation: wobble 0.3s linear 1s 2 forwards;
+	animation: wobble 0.6s linear 1.6s infinite forwards;
 }
 
 .step-4 .icons span.letter {
@@ -1106,6 +1104,93 @@ h1 span {
 .step-4 .icons span.letter:nth-child(even) {
 	-webkit-animation-duration: 0.7s;
 	animation-duration: 0.7s;
+}
+
+.redPacketInfo{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	display: none;
+}
+.redPacketBox{
+	width: 72%;
+	height: 46%;
+	padding: 16% 4% 0 4%;
+	margin: 30% auto 10px;
+	background: #DD2727;
+	border-radius: 10px;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+}
+.redPacketBox p{
+	color: #FF9900;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.keywords{
+	width: 40%;
+	height: auto;
+	margin: 0 auto;
+}
+.keywords img{
+	width: 100%;
+	height: 100%;
+}
+.eyes{
+	width: 40%;
+	height: auto;
+	margin: 0 auto;
+}
+.eyes img{
+	width: 100%;
+	height: 100%;
+}
+.close {
+	width: 36px;
+	height: 36px;
+	background: #fff;
+	border-radius: 18px;
+	margin: 0 auto;
+	cursor: pointer;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.close img {
+	width: 26px;
+	height: 26px;
+	margin: 5px;
+}
+
+.copyRight {
+	width: 72%;
+	height: 10%;
+	padding: 4%;
+	background: #DD2727;
+	position: absolute;
+	z-index: 100;
+	bottom: 40%;
+	left: 10%;
+	display: none;
+}
+
+.copyRight p {
+	font-size: 18px;
+	line-height: 30px;
+	color: #fff;
+}
+
+.comeup {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	transition: all 0.3s;
+	transition-delay:1s;
+	-webkit-transition: all 0.3s;
+	-webkit-transition-delay:1s;
 }
 
 @-webkit-keyframes wobble {

@@ -11,6 +11,9 @@
 		<!--[if IE]>
   			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/clipboard.min.js"></script>
+		<script src="js/shake.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -1529,6 +1532,25 @@
 							C23.938,21.417,21.176,21.868,19.193,23.851z" />
 					</svg>
 				</div>
+				<div class="redPacketInfo">
+					<div class="redPacketBox">
+						<p>恭喜你</p>
+						<p>获得了一个红包</p>
+						<p>复制以下密令</p>
+						<p>到支付宝领取红包吧</p>
+						<p id="pwd">唐松的圣诞节红包</p>
+						<button class="copyBtn copy">点击复制</button>
+
+					</div>
+					<div class="close">
+						<a href="javascript：void(0);"><img src="http://ogovuaov8.bkt.clouddn.com/guanbi.png"/></a>
+					</div>
+
+				</div>
+				<div class="copyRight">
+					<p>复制成功</p>
+					<p>快去支付宝领取红包吧！</p>
+				</div>
 			</div>
 		</div>
 		<!-- /container -->
@@ -1536,5 +1558,79 @@
 		<script src="js/snow.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/main.js"></script>
+	<script>
+        var clipboard = new Clipboard('.copyBtn', {
+            text: function() {
+                return $("#pwd").text();
+            }
+        });
+
+        clipboard.on('success',
+            function(e) {
+                $(".redPacketInfo").fadeOut();
+                $(".redPacketBox").removeClass("comeup");
+                $(".close").removeClass("comeup");
+                $(".copyRight").fadeIn().delay(3000).fadeOut();
+            });
+        clipboard.on('error',
+            function(e) {
+                console.log(e);
+                alert("对不起，您的微信不支持该功能，请手动长按复制");
+            });
+
+        //摇一摇
+        $(function() {
+            var Main = (function() {
+                function playAudio(src) {
+                    if(typeof Audio != "undefined") {
+                        new Audio(src).play();
+                    } else if(typeof device != "undefined") {
+                        if(device.platform == 'Android') {
+                            console.log(src);
+                        }
+                        var mediaRes = new Media(src,
+                            function onSuccess() {
+                                mediaRes.release();
+                            },
+                            function onError(e) {
+                                console.log("error playing sound: " + JSON.stringify(e));
+                            });
+                        mediaRes.play();
+
+                    } else {
+                        alert("no sound API to play: " + src);
+                    }
+                }
+                window.addEventListener('shake', autoRun, false);
+
+                function autoRun() {
+                    playAudio("http://ogovuaov8.bkt.clouddn.com/luckymoney.mp3");
+                    $(".redPacketInfo").fadeIn();
+                    $(".redPacketBox").addClass("comeup");
+                    $(".close").addClass("comeup");
+
+                    $(".close").one("click", function() {
+                        $(".redPacketInfo").hide();
+                        $(".redPacketBox").removeClass("comeup");
+                        $(".close").removeClass("comeup");
+                    });
+
+                    e.stopPropagation();
+
+                    $(".redPacketBox").on("click", function(e) {
+                        e.stopPropagation();
+                    });
+                }
+                var init = function() {
+
+                }
+                return {
+                    init: init
+                }
+            })();
+
+            $(Main.init());
+        });
+	</script>
 	</body>
 </html>
